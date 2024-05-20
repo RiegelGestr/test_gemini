@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import pandas as pd
 from flask import request
 import numpy as np
+import os
 
 df = pd.DataFrame({
     'Date': pd.date_range(start='2021-01-01', periods=100, freq='W'),
@@ -201,4 +202,5 @@ def stop_server(n_clicks):
     return "Stop Server"
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    port = int(os.environ.get('PORT', 8050))
+    app.run_server(debug=True, port=port, host='0.0.0.0')
