@@ -322,7 +322,7 @@ def update_intro_interval(style):
     if style['display'] == 'none':
         return 60*1000  # Ritorna l'intervallo originale per la heatmap
     else:
-        return 1*1000  # Intervallo più breve per l'overlay introduttivo
+        return 3*1000  # Intervallo più breve per l'overlay introduttivo
 ########################################################################
 ########################################################################
 ########################################################################
@@ -472,7 +472,7 @@ def update_veicoli_graph(selected_veicolo):
             continue
         fig.add_trace(go.Scatter(x=df['Date'], y=df[x], mode='lines', line=dict(color="grey")))
     fig.update_layout(
-        title = "Number of Trips " + selected_veicolo
+        title = "Number of Trips: " + selected_veicolo
     )
     fig.update(layout_showlegend=False)
     fig.update_layout(
@@ -498,7 +498,7 @@ def update_utenti_graph(selected_utente):
             continue
         fig.add_trace(go.Scatter(x=df['Date'], y=df[x], mode='lines', line=dict(color="grey")))
     fig.update_layout(
-        title = "Number of " + selected_utente
+        title = "Number of New Users: " + selected_utente
     )
     fig.update(layout_showlegend=False)
     fig.update_layout(
@@ -524,7 +524,7 @@ def update_vehicles_graph(selected_utente):
             continue
         fig.add_trace(go.Scatter(x=df['Date'], y=df[x], mode='lines', line=dict(color="grey")))
     fig.update_layout(
-        title = "Number of " + selected_utente
+        title = "Number of Vehicles: " + selected_utente
     )
     fig.update(layout_showlegend=False)
     fig.update_layout(
@@ -610,7 +610,7 @@ def update_distance(selected_distance):
     fig1 = go.Figure(data=go.Box(x=df_distance[df_distance["shared_provider"] == selected_distance]["distance"],name = selected_distance, marker=dict(color = color_map[selected_distance])))
     fig1.add_trace(go.Box(x=df_distance["distance"],name = "All", marker=dict(color="grey")))
     fig1.update_layout(
-        title="Trip Distance Distribution",
+        title="Trip Distance Distribution: " + selected_distance,
         xaxis_title="Distance",
         font=dict(
             family="Courier New, monospace",
@@ -746,7 +746,7 @@ def update_graph(selected_provider):
         fig.add_trace(go.Bar(
             x=df_customer.index,
             y=df_customer[f'{selected_provider}_{category}'],
-            name=f'{selected_provider} {category}',
+            name=f'{category}',
             marker_color = dict_color[category]
         ))
 
