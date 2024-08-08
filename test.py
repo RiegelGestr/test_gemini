@@ -357,7 +357,7 @@ def render_tab_content(active_tab):
     ], ),
     elif active_tab == "users_graph":
         return dbc.Row([
-            html.H1("New User Growth Over Time", style={'fontFamily': 'Courier New, monospace', 'fontSize': '32px'}),
+            html.H1("User Growth Over Time", style={'fontFamily': 'Courier New, monospace', 'fontSize': '32px'}),
             dbc.Col([
                 dcc.Dropdown(
                     id='utenti-dropdown',
@@ -373,7 +373,7 @@ def render_tab_content(active_tab):
             ], width = 8),
         dbc.Col([
             html.H3("What is this graph?", style={'fontFamily': 'Courier New, monospace', 'fontSize': '24px'}),
-            html.P("This plot displays the number of new users registering for the chosen shared mobility service each week. Select a week using the slider to see how new user acquisition varies over time. This helps assess the growth and appeal of each service, revealing trends in user adoption and service expansion. The data for the current week is shown in the card above."),
+            html.P("This plot displays the number of users for the chosen shared mobility service each week. Select a week using the slider to see how new user acquisition varies over time. This helps assess the growth and appeal of each service, revealing trends in user adoption and service expansion. The data for the current week is shown in the card above."),
         ], width=4)
         ],),
     elif active_tab == "vehicles_graph":
@@ -498,7 +498,7 @@ def update_utenti_graph(selected_utente):
             continue
         fig.add_trace(go.Scatter(x=df['Date'], y=df[x], mode='lines', line=dict(color="grey")))
     fig.update_layout(
-        title = "Number of New Users: " + selected_utente
+        title = "Number of Users: " + selected_utente
     )
     fig.update(layout_showlegend=False)
     fig.update_layout(
